@@ -42,8 +42,8 @@
     border-radius: 30px;
   }
 */
+@color-primary:#1ba5fd;
 #page-home {
-  @color-primary:#1ba5fd;
   color:#fff;
   h2 { color:@color-primary; }
   .card {  
@@ -52,20 +52,25 @@
     h3 { margin:21px 0; text-align:center; }
   }
   .panel { position:relative; margin:0 auto; }
-  
   .addition img { display:block; margin:0 auto; }
+  
   #news  {
     .card { height:auto; }
   }
   #about {
     p { margin:20px auto; width:900px; text-align:center; }
   }
-  // #highlights {}
+  #highlights {
+    .card { width:370px; }
+  }
   #team {
     .card { 
-      margin-bottom:30px; width:300px; 
+      margin-bottom:30px; width:25%; padding:18px 24px;
       .avatar { margin:0 auto; width:180px; height:180px; border-radius:90px; background:no-repeat center/cover; }
     }
+  }
+  #advisor {
+    .card { padding:18px 0; }
   }
   #partners { 
     height:670px; background:url(~/assets/img/partners/bg.jpg) no-repeat center;
@@ -84,7 +89,7 @@
         div { 
           position:relative; 
           span { 
-            position:absolute; top:60px; left:0; 
+            position:absolute; top:60px; left:5px; 
             &.invalid,
             &.failed { color:#f56c6c; }
             &.successful { color:#67c23a; }
@@ -140,9 +145,12 @@
 .mobile #page-home {
   .card  { width:100%; padding:18px 10px; }
   .panel { width:100%; }
+  #news {
+    .card {  padding:0; }
+  }
   #about p { padding:0 15px; width:auto; }
-  // #team .card { width:100%; }
-  #partners { height:500px; }
+  #team .card { width:100%; padding:18px 10px; }
+  #partners { height:470px; }
   #contact {
     height:auto;
     .panel { 
@@ -153,7 +161,7 @@
           p { margin:25px; line-height:1.2; }
           input[type=email] { width:90%; margin:0; }
           input[type=button] { margin-top:25px; }
-          span { left:5%; top:58px; }
+          span { left:6%; top:58px; }
         }
         .social { 
           h3 {margin-top:40px; }
@@ -164,7 +172,24 @@
     }
   }
   #footer { display:none; }
+
 }
+  .alertify-notifier.ajs-bottom ajs-right,
+  .ajs-message.ajs-visible { box-sizing:content-box; color:#212529; font-family:TitilliumWeb; }
+  #alertify-fixed-para {
+    font:inherit;
+    text-align:inherit;
+    color:inherit;
+  }
+  #alertify-fixed-btn { 
+    display:block;
+    margin:15px 10px 0 10px;
+    line-height:48px;
+    text-align:center; color:@color-primary; border:1px solid @color-primary; 
+    font-size: 1.125rem;
+    // padding: 0.5rem 2.9rem;
+    border-radius:30px;
+  }
 </style>
 
 <template>
@@ -232,8 +257,15 @@
         </div>
       </div>
     </div>
+    <!-- 应用场景 -->
+    <div id="scene" class="addition">
+      <div class="panel">
+        <h2>Scene</h2>
+        <img src="~/assets/img/scene/scene.png" alt="">
+      </div>
+    </div>
     <!-- 天气产品 -->
-    <div id="production" class="anchor" v-if="false">
+    <div id="production" class="anchor">
       <div class="panel">
         <h2>{{production.title}}</h2>
         <p style="margin:-20px 0 40px 0; font-size:20px;">
@@ -273,6 +305,7 @@
         </div>
       </div>
     </div>
+    <!-- 团队背景 -->
     <div id="team-background" class="addition">
       <div class="panel">
         <h2>{{team.background.title}}</h2>
@@ -317,7 +350,7 @@
         <img :class="roadmap.img[platform].clsn" :src="roadmap.img[platform].src" alt="">
       </div>
     </div>
-    <!-- 联系我们 -->
+    <!-- 联系我们/注册 -->
     <div id="contact">
       <div class="panel flex-dir-row">
         <div class="left flex-3">
@@ -327,7 +360,7 @@
             <div>
               <input type="email" :placeholder="contact.join.placeholder" v-model.trim="email.value" @input="emailInput"/>
               <input type="button" :value="contact.join.btn" @click="register"/>
-              <span :class="email.note">{{email[email.note]}}</span>
+              <span :class="email.note">{{contact.join.note[email.note]}}</span>
             </div>
           </div>
           <div class="social">
@@ -340,19 +373,21 @@
           </div>
         </div>
         <div class="right twitter flex-2">
+          <template v-if="docMounted">
           <a class="twitter-timeline" href="https://twitter.com/Valpromise?ref_src=twsrc%5Etfw" 
             data-theme="dark" 
             data-height="440"
             data-chrome="noheader nofooter noborders transparent"
           >Tweets by Valpromise</a> 
           <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </template>
         </div>
       </div>
     </div>
     <!-- 页脚 -->
     <footer1 />
     <!-- 弹窗 -->
-    <div id="dialog-raising">
+    <!-- <div id="dialog-raising">
       <div id="raising-fill-wrapper" class="outer-wrapper">
         <i class="btn-close"></i>
         <div class="inner-wrapper">
@@ -448,7 +483,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -460,13 +495,14 @@ import footer1 from '~/components/layout/footer'
 export default {
   data() {
     return {
+      docMounted:false,
       email:{
         value:'',
         note :'',
         hasChange:false,
-        invalid:'无效邮箱',
-        failed:'发送失败',
-        successful:'注册成功',
+        // invalid:'无效邮箱',
+        // failed:'发送失败',
+        // successful:'注册成功',
       }
     } 
   },
@@ -512,7 +548,12 @@ export default {
         url :'http://bot.valp.io/botMail/insertBotMail',
         data:{ email:this.email.value },
         success:(resp)=> {
-          this.email.note = resp.state===1? 'successful':'failed';
+          if ( resp.state === 1 ) {
+            this.email.note = 'successful';
+            alertify.message('<span style="color:#67c23a">'+this.contact.join.note.successful+'</span>');
+          } else {
+            this.email.note = 'failed';
+          }
         },
         error:()=>{
           this.email.note = 'failed';
@@ -534,6 +575,14 @@ export default {
   },
   mounted() {
     initializer($);
+    this.docMounted = true;
+    if ( typeof window ==='object' ) {
+      alertify.dismissAll();
+      alertify.message(
+        `<p id="alertify-fixed-para" >Make new friends! </p>
+        <a id="alertify-fixed-btn" href="https://t.me/ValPromise" target="_blank">${this.joinGroup}</a>`
+      , 0)
+    }
   },
   components: {
     contact, footer1

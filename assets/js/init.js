@@ -72,6 +72,24 @@ export default function($) {
       }
       topbar.addClass('collapsed');
     });
+    $('#footer').on('click', 'a', function(e) {
+      if ( !isHomepage() ) return;
+      var a = $(this);
+      if ( a.data('anchor') ) {
+        var t = $('#'+a.data('anchor')).position().top - topbarHeight;
+        anchor.removeClass("focus");
+        anchor = a.addClass('focus');
+        stopFocusNav = true;
+        $scrollElement.stop().animate({scrollTop:t<0?0:t}, 300, function(e) {
+          stopFocusNav = false;
+          isCollapsed = true;
+        });
+      } else {
+        stopFocusNav = false;
+        isCollapsed = true;
+        toggleTopbarMask();
+      }
+    })
   
     // 锚点映射
     var navs    = topbar.find('a[data-anchor]');
@@ -373,7 +391,7 @@ export default function($) {
     panelPoses.forEach(function(p, i, top) {
       top = getScrollTop()+screenHei;
       if ( top > p.top && top < p.top+p.height+screenHei ) {
-        panels.eq(i).addClass('highlight');
+        panels.eq(i).addClass('highlight').css({'opacity':1, 'transform':'scale(1)'});
       } else {
         panels.eq(i).removeClass('highlight');
       }

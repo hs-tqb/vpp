@@ -1,5 +1,22 @@
 <style lang="less">
+  #topbar { 
+    position:fixed; top:0; left:0; z-index:100;
+    width:100%; height:80px; 
+    font-size:20px; line-height:80px; color:#fff;
+    transition:all 300ms;
+    overflow:hidden;
+    /* background-color:rgba(0,0,0,0.3); */
+    &.dark { background:rgba(0,0,0,0.7) }
 
+    .menuSwitch { display:none;  }
+    #logo { width:215px; height:100%; background:url(~assets/img/logo/logo-h-b.png) no-repeat 20px center/152.6px auto; }
+    #nav { height:100%; font-size:15px; }
+    #nav li a { display:block; padding:0 24px; transition:300ms; }
+    #nav li a:hover,
+    #nav li a.focus { color:#00a0e9; }
+    #func { float:right; }
+  }
+  .mobile #topbar #nav { height:100vh; }
 </style>
 
 <template>
@@ -31,9 +48,6 @@
 
 export default {
   computed: {
-    num() {
-      return this.$store.state.num
-    },
     lang() {
       return this.$store.state.lang
     }

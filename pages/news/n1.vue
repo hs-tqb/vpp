@@ -1,5 +1,8 @@
 <style>
   #page-news #topbar .panel { padding:0; height:100%; }
+  #page-news #footer { background-color:#0f1421; }
+  .mobile #page-news { padding:0 24px; }
+  .mobile #footer { display:none; }
 </style>
 
 <template>

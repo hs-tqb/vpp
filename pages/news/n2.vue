@@ -1,5 +1,8 @@
 <style>
   #page-news #topbar .panel { padding:0; height:100%; }
+  #page-news #footer { background-color:#0f1421; }
+  .mobile #footer { display:none; }
+  .mobile #page-news { padding:0 24px; }
 </style>
 
 <template>
@@ -27,7 +30,7 @@
 
 <script>
 import {mapState} from 'vuex'
-import footer1 from '~/components/layout/contact'
+import footer1 from '~/components/layout/footer'
 export default {
   layout:'empty',
   computed:mapState({
