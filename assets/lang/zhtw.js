@@ -5,11 +5,11 @@ export default {
     { name:'English', type:'en' }
   ],
   navs:[
-    {name:'白名單開啟', external:true, link:"http://valpromise.mikecrm.com/bkceWWX"},
-    {anchor:'highlights', name:'技術和平臺', inFooter:true}, 
-    {anchor:'production', name:'天氣保險', inFooter:true}, 
-    {anchor:'roadmap', name:'路線圖', inFooter:true}, 
+    {name:'預售登記', external:true, link:"http://valpromise.mikecrm.com/MeBeFVu"},
+    {anchor:'highlights', name:'產品', inFooter:true}, 
     {anchor:'team', name:'團隊', inFooter:true}, 
+    {anchor:'advisor', name:'顧問', inFooter:true}, 
+    {anchor:'contact', name:'聯繫我們', inFooter:true}, 
   ],
   slogan:'分布式價值承諾協議',
   joinGroup:'加入电报群',
@@ -23,7 +23,7 @@ export default {
     desc :'ValPromise價值承諾協議，是一個基於區塊鏈的分布式承諾合約發布和交易平臺，旨在解決全球範圍跨品種跨地區的風險管理問題，能廣泛應用在保險、 金融衍生品、預測等市場。'
   },
   highlights: {
-    title:'技術和平臺',
+    title:'亮點',
     items:[
       { 
         img:require('~/assets/img/highlights/i1.png'), 
@@ -56,6 +56,10 @@ export default {
         desc:'ValPromise 通過適合 Mobile 和 IOT 的前端應用，降低區塊鏈的應用成本，讓更多力量加入到 ValPromise 區塊鏈中。' 
       }
     ]
+  },
+  realization: {
+    title:'產品',
+    img:require('~/assets/img/scene/scene.png'),
   },
   production: {
     title:'天氣保險：ValPromise生態的首個應用',
@@ -135,47 +139,72 @@ export default {
       },
     ],
     background: {
-      title:'team.background',
+      title:'團隊背景',
       institutions:require('~/assets/img/team/background.png')
     }
   },
   advisor: {
-    title:'顧問',
+    title:'投資 & 顧問',
     items:[
-      // {
-      //   name:'PATRICK DAI&nbsp;&nbsp;&nbsp;Founder of QTUM',
-      //   avatar:require('~/assets/img/advisor/c1.png')
-      //   desc:''
-      // },
+      {
+        name:'王剛',
+        avatar:require('~/assets/img/advisor/a1.png'),
+        desc:'著名天使投資人、滴滴投資人'
+      },
+      {
+        name:'吳宵光',
+        avatar:require('~/assets/img/advisor/a2.png'),
+        desc:'騰訊聯合創始人'
+      },
+      {
+        name:'王利傑',
+        avatar:require('~/assets/img/advisor/a3.png'),
+        desc:'著名區塊鏈投資人'
+      },
+      {
+        name:'楊鐳',
+        avatar:require('~/assets/img/advisor/a4.png'),
+        desc:'顧問 / PruSmartHR 保險咨詢服務公司CEO'
+      },
       {
         name:'勞維信',
-        avatar:require('~/assets/img/advisor/c2.png'),
-        desc:'前海國際區塊鏈生態聯盟主席'
-      }
-    ]
+        avatar:require('~/assets/img/advisor/a5.png'),
+        desc:'顧問 / 前海國際區塊鏈生態聯盟主席'
+      },
+      {
+        name:'Melody He',
+        avatar:require('~/assets/img/advisor/a6.png'),
+        desc:'顧問 / TenX 早期投資者，曾供職于高盛'
+      },
+    ],
   },
   investors: {
-    title:'投資机构',
+    title:'投資機構',
     institutions:require('~/assets/img/investors/institutions.png')
   },
   partners: {
-    title:'Partners',
+    title:'合作夥伴',
     institutions: {
-      title :'sdfsd',
+      title :'戰略合作夥伴',
       trademark:require('~/assets/img/partners/institutions.png')
     },
     enterprise: {
-      title :'aaaa',
+      title :'合作夥伴',
       trademark:require('~/assets/img/partners/enterprise.png')
     }
   },
   contact: {
     // title:'聯系我們',
     join:{
-      title:'Join us in building the sharing economy of tomorrow',
-      desc :'Sign up for our mailing list and be first to learn of any  ValPromise news!',
-      placeholder:'Enter email',
-      btn:'Join'
+      title:'和我們一起創建價值承諾體系的未來',
+      desc :'註冊成為我們郵件組成員，第一時間獲得最新項目資訊',
+      placeholder:'輸入郵箱',
+      btn:'加入我們',
+      note:{
+        invalid:'無效的郵箱',
+        failed:'註冊失敗',
+        successful:'註冊成功'
+      }
     },
     social: {
       title:'聯系我們'

@@ -7,14 +7,14 @@ export default {
   navs:[
     {name:'Presale', external:true, link:"http://valpromise.mikecrm.com/bkceWWX"},
     // {anchor:'highlights', name:'Highlights', inFooter:true }, 
-    {anchor:'production', name:'Weather Insurance', inFooter:true }, 
-    // {anchor:'production', name:'Production', inFooter:true }, 
+    // {anchor:'production', name:'Weather Insurance', inFooter:true }, 
+    {anchor:'highlights', name:'Production', inFooter:true }, 
     {anchor:'team', name:'Team', inFooter:true }, 
-    {anchor:'investor', name:'Investors',inFooter:true }, 
+    {anchor:'advisor', name:'Investors',inFooter:true }, 
     {anchor:'contact', name:'Contact',inFooter:true }, 
   ],
   slogan:'Distributed Value Promise Protocol',
-  joinGroup:'Join our commuity',
+  joinGroup:'Join our community',
   news: [
     { link:'/news/n2', img:require('~/assets/img/news/2/0-en.png') },
     { link:'/news/n1', img:require('~/assets/img/news/1/0-en.png') },
@@ -25,7 +25,7 @@ export default {
     desc :'ValPromise is committed to build a blockchain-based, distributed value promise contract release-trading platform.  Being widely applied in insurance, financial derivatives, forecasting services and other areas, ValPromise aim to solve multi-variety and cross-region risk management issues on a global scale..'
   },
   highlights: {
-    title:'highlights',
+    title:'Highlights',
     items:[
       { 
         img:require('~/assets/img/highlights/i1.png'), 
@@ -58,6 +58,10 @@ export default {
         desc:'The development of front-end applications suitable for Mobile ad IOT. The  lower costs via blockchain will attract more participants in ValPromise.' 
       }
     ]
+  },
+  realization: {
+    title:'Technical Realization',
+    img:require('~/assets/img/scene/scene.png'),
   },
   production: {
     title:'Weather Insurance : the first application in ValPromise eco',
@@ -97,7 +101,7 @@ export default {
     }
   },
   team: {
-    title:'Team',
+    title:'ValPromise Team',
     items:[
       {
         name  :'Xiang Tao',
@@ -136,12 +140,12 @@ export default {
       },
     ],
     background: {
-      title:'team.background',
+      title:'Team Background',
       institutions:require('~/assets/img/team/background.png')
     }
   },
   advisor: {
-    title:'Advisor',
+    title:'Investors & Advisors',
     items:[
       {
         name:'Wang Gang',
@@ -161,39 +165,39 @@ export default {
       {
         name:'Raymond Yang',
         avatar:require('~/assets/img/advisor/a4.png'),
-        desc:'CEO of PruSmartHR consulting services company'
+        desc:'Advisor / CEO of PruSmartHR consulting services company'
       },
       {
         name:'Lao WeiXin',
         avatar:require('~/assets/img/advisor/a5.png'),
-        desc:'Chairman of Qianhai Blockchain Ecological Alliance'
+        desc:'Advisor / Chairman of Qianhai Blockchain Ecological Alliance'
       },
       {
         name:'Melody He',
         avatar:require('~/assets/img/advisor/a6.png'),
-        desc:'Advisor/International BD'
+        desc:'Advisor / International BD'
       },
     ],
   },
   investors: {
-    title :'Investors',
+    title :'Investment Agencies',
     institutions:require('~/assets/img/investors/institutions.png')
   },
   partners: {
-    title:'Partners',
+    title:'Strategic Partners',
     institutions: {
-      title :'sdfsd',
+      title :'Blockchain Partners',
       trademark:require('~/assets/img/partners/institutions.png')
     },
     enterprise: {
-      title :'aaaa',
+      title :'Partners',
       trademark:require('~/assets/img/partners/enterprise.png')
     }
   },
   contact: {
     // title:'Contact Us',
     join:{
-      title:'Join us in building the sharing economy of tomorrow',
+      title:'Join us in building the future of value promise',
       desc :'Sign up for our mailing list and be first to learn of any  ValPromise news!',
       placeholder:'Enter email',
       btn:'Join',

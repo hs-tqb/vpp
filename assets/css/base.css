@@ -71,12 +71,12 @@ p { font-size:14px; line-height:28px; text-align:justify; opacity:1; }
 /* #nav li:last-child a { color:#fff!important; } */
 /* #nav li a span { color:#ff0; } */
 
-#slideshow { position:relative; z-index:10; height:100vh; background-color:#000; }
+#slideshow { display:flex; align-items:center; justify-content:space-around; position:relative; z-index:10; height:100vh; background-color:#000; }
 /* bannes */
-#banner   { width:100%; height:100%; 
+#banner   { position:absolute; top:0; left:0; width:100%; height:100%; 
 background:url(~assets/img/banner.jpg) no-repeat center/cover; 
 }
-#white-paper { position:absolute; top:0; z-index:20; width:100%;  text-align:center; color:#fff; }
+#white-paper { position: relative; z-index:10; width:100%;  text-align:center; color:#fff; }
 #white-paper h1 { font-size:36px; }
 #white-paper img { margin-bottom:10px; width:240px; }
 #white-paper p { margin-top:24px; font-size:20px; text-align:inherit; opacity:1; }

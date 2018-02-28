@@ -66,14 +66,14 @@
   #team {
     .card { 
       margin-bottom:30px; width:25%; padding:18px 24px;
-      .avatar { margin:0 auto; width:180px; height:180px; border-radius:90px; background:no-repeat center/cover; }
+      .avatar { margin:0 auto; width:160px; height:160px; border-radius:90px; background:no-repeat center/cover; }
     }
   }
   #advisor {
     .card { padding:18px 0; }
   }
   #partners { 
-    height:670px; background:url(~/assets/img/partners/bg.jpg) no-repeat center;
+    height:670px; background:url(~/assets/img/partners/bg.jpg) no-repeat center/cover;
     h3 { margin:40px 0; }
     img+h3 { margin-top:60px; }
   }
@@ -258,10 +258,10 @@
       </div>
     </div>
     <!-- 应用场景 -->
-    <div id="scene" class="addition">
+    <div id="realization" class="addition">
       <div class="panel">
-        <h2>Scene</h2>
-        <img src="~/assets/img/scene/scene.png" alt="">
+        <h2>{{realization.title}}</h2>
+        <img :src="realization.img" alt="">
       </div>
     </div>
     <!-- 天气产品 -->
@@ -521,6 +521,7 @@ export default {
       news      :state=>state.lang.news,
       about     :state=>state.lang.about,
       highlights:state=>state.lang.highlights,
+      realization:state=>state.lang.realization,
       production:state=>state.lang.production,
       roadmap   :state=>state.lang.roadmap,
       team      :state=>state.lang.team,

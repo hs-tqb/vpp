@@ -30,7 +30,7 @@
           </li>
         </ul>
       </div>
-      <p>Copyright © 2018 QunQun Lab Foundation Ltd. All Rights Reserved</p>
+      <p>Copyright © 2018 ValPromise. All Rights Reserved</p>
     </div>
   </div>
 </template>
