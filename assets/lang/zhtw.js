@@ -5,7 +5,7 @@ export default {
     { name:'English', type:'en' }
   ],
   navs:[
-    {clsn:'showRaising', name:'白名單開啟'},
+    {name:'白名單開啟', external:true, link:"http://valpromise.mikecrm.com/bkceWWX"},
     {anchor:'highlights', name:'技術和平臺'}, 
     {anchor:'production', name:'天氣保險'}, 
     {anchor:'roadmap', name:'路線圖'}, 

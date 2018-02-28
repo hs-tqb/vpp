@@ -5,7 +5,7 @@ export default {
     { name:'中文', type:'zh-tw' }
   ],
   navs:[
-    {clsn:'showRaising', name:'Presale'},
+    {name:'Presale', external:true, link:"http://valpromise.mikecrm.com/bkceWWX"},
     {anchor:'highlights', name:'Highlights'}, 
     {anchor:'production', name:'Weather Insurance'}, 
     {anchor:'roadmap', name:'Roadmap'}, 

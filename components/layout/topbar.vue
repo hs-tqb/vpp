@@ -14,7 +14,7 @@
       <li><a id="showRaising" href="javascript:void(0)">KYC</a></li>
        -->
        <li v-for="(n,i) in lang.navs" :key="`nav${i}`">
-          <a href="javascript:void(0)" :data-anchor="n.anchor" :class="n.clsn">{{n.name}}</a>
+          <a :href="n.link||'javascript:void(0)'" :data-anchor="n.anchor" :target="n.external?'_blank':''">{{n.name}}</a>
        </li>
 
       <!-- <li><a href="/zh">中文</a></li> -->

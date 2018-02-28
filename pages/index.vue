@@ -63,7 +63,7 @@
   // #highlights {}
   #team {
     .card { 
-      margin-bottom: 30px; padding: 18px 24px; width:300px; 
+      margin-bottom:30px; width:300px; 
       .avatar { margin:0 auto; width:180px; height:180px; border-radius:90px; background:no-repeat center/cover; }
     }
   }
@@ -138,23 +138,25 @@
   }
 }
 .mobile #page-home {
+  .card  { width:100%; padding:18px 10px; }
   .panel { width:100%; }
   #about p { padding:0 15px; width:auto; }
-  #team .card { width:100%; }
+  // #team .card { width:100%; }
   #partners { height:500px; }
   #contact {
     height:auto;
     .panel { 
       text-align:center; 
       > div {
+        h3 { margin-bottom:10px; }
         .join {
-          p { margin:10px 25px; line-height:1.2; }
+          p { margin:25px; line-height:1.2; }
           input[type=email] { width:90%; margin:0; }
           input[type=button] { margin-top:25px; }
           span { left:5%; top:58px; }
         }
         .social { 
-          h3 {margin-top:30px; }
+          h3 {margin-top:40px; }
           div { display:flex; flex-direction:row; justify-content:space-around; }
           a { float:none; }
         }
@@ -323,7 +325,7 @@
             <h3>{{contact.join.title}}</h3>
             <p>{{contact.join.desc}}</p>
             <div>
-              <input type="email" :placeholder="contact.join.placeholder" v-model.trim="email.value" @input="email.note=''"/>
+              <input type="email" :placeholder="contact.join.placeholder" v-model.trim="email.value" @input="emailInput"/>
               <input type="button" :value="contact.join.btn" @click="register"/>
               <span :class="email.note">{{email[email.note]}}</span>
             </div>
@@ -337,7 +339,7 @@
             </div>
           </div>
         </div>
-        <div class="right flex-2">
+        <div class="right twitter flex-2">
           <a class="twitter-timeline" href="https://twitter.com/Valpromise?ref_src=twsrc%5Etfw" 
             data-theme="dark" 
             data-height="440"
@@ -461,6 +463,7 @@ export default {
       email:{
         value:'',
         note :'',
+        hasChange:false,
         invalid:'无效邮箱',
         failed:'发送失败',
         successful:'注册成功',
@@ -496,14 +499,17 @@ export default {
     emailInput() {
       // if ( this.email.value )
       this.email.note = '';
+      this.email.hasChange = true;
     },
     register() {
-      if ( !/[a-zA-Z][a-zA-Z0-9-_.]*@[a-zA-Z0-9]+\.[a-zA-Z]+/.test(this.email.value) ) {
+      if ( !this.email.value || !this.email.hasChange ) return;
+      this.email.hasChange = false;
+      if ( !/[a-zA-Z0-9][a-zA-Z0-9-_.]*@[a-zA-Z0-9]+\.[a-zA-Z]+/.test(this.email.value) ) {
         return this.email.note = 'invalid';
       }
       $.ajax({
         type:'post',
-        url :'',
+        url :'http://bot.valp.io/botMail/insertBotMail',
         data:{ email:this.email.value },
         success:(resp)=> {
           this.email.note = resp.state===1? 'successful':'failed';
