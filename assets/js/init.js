@@ -389,7 +389,7 @@ export default function($) {
   }
   function highlightPanels() {
     panelPoses.forEach(function(p, i, top) {
-      top = getScrollTop()+screenHei;
+      top = getScrollTop()+screenHei-200;
       if ( top > p.top && top < p.top+p.height+screenHei ) {
         panels.eq(i).addClass('highlight').css({'opacity':1, 'transform':'scale(1)'});
       } else {
