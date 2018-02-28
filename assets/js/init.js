@@ -19,7 +19,8 @@ export default function($) {
       if ( isCollapsed ) {
         scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
         // scrollTop = getScrollTop();
-        topbar.css('background', 'rgba(15,20,33,'+(scrollTop/scrollHei*2)+')')
+        // topbar.css('background', 'rgba(15,20,33,'+(scrollTop/scrollHei*2)+')')
+        topbar.css('background', 'rgba(15,20,33,'+(scrollTop/vh)+')')
       }
     }
   

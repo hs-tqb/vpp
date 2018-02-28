@@ -51,7 +51,7 @@
     img.avatar { display:block; margin:0 auto; }
     h3 { margin:21px 0; text-align:center; }
   }
-  .panel { position:relative; margin:0 auto; width:1200px; }
+  .panel { position:relative; margin:0 auto; }
   
   .addition img { display:block; margin:0 auto; }
   #news  {
@@ -81,6 +81,15 @@
       h3 { margin-bottom:30px; font-size:30px; color:@color-primary; }
       .join { 
         h3 + p { margin:33px 0; }
+        div { 
+          position:relative; 
+          span { 
+            position:absolute; top:60px; left:0; 
+            &.invalid,
+            &.failed { color:#f56c6c; }
+            &.successful { color:#67c23a; }
+          }
+        }
         input {
           height:50px; line-height:1; font-size:24px; border:0 none; outline:0 none; border-radius:18px;
           &[type=email] { margin-right:20px; padding:0 25px; color:#333; }
@@ -127,6 +136,32 @@
       }
     }
   }
+}
+.mobile #page-home {
+  .panel { width:100%; }
+  #about p { padding:0 15px; width:auto; }
+  #team .card { width:100%; }
+  #partners { height:500px; }
+  #contact {
+    height:auto;
+    .panel { 
+      text-align:center; 
+      > div {
+        .join {
+          p { margin:10px 25px; line-height:1.2; }
+          input[type=email] { width:90%; margin:0; }
+          input[type=button] { margin-top:25px; }
+          span { left:5%; top:58px; }
+        }
+        .social { 
+          h3 {margin-top:30px; }
+          div { display:flex; flex-direction:row; justify-content:space-around; }
+          a { float:none; }
+        }
+      }
+    }
+  }
+  #footer { display:none; }
 }
 </style>
 
@@ -287,14 +322,19 @@
           <div class="join">
             <h3>{{contact.join.title}}</h3>
             <p>{{contact.join.desc}}</p>
-            <input type="email" :placeholder="contact.join.placeholder" />
-            <input type="button" :value="contact.join.btn" />
+            <div>
+              <input type="email" :placeholder="contact.join.placeholder" v-model.trim="email.value" @input="email.note=''"/>
+              <input type="button" :value="contact.join.btn" @click="register"/>
+              <span :class="email.note">{{email[email.note]}}</span>
+            </div>
           </div>
           <div class="social">
             <h3>{{contact.social.title}}</h3>
-            <a href="https://t.me/ValPromise" target="_blank" class="icon fb"></a>
-            <a href="javascript:void(0)" class="icon wc"><i><img src="~/assets/img/icons/wc-qrcode.png" alt=""></i></a>
-            <a href="mailto:hi@valp.io" class="icon em"></a>
+            <div>
+              <a href="https://t.me/ValPromise" target="_blank" class="icon fb"></a>
+              <a href="javascript:void(0)" class="icon wc"><i><img src="~/assets/img/icons/wc-qrcode.png" alt=""></i></a>
+              <a href="mailto:hi@valp.io" class="icon em"></a>
+            </div>
           </div>
         </div>
         <div class="right flex-2">
@@ -418,6 +458,13 @@ import footer1 from '~/components/layout/footer'
 export default {
   data() {
     return {
+      email:{
+        value:'',
+        note :'',
+        invalid:'无效邮箱',
+        failed:'发送失败',
+        successful:'注册成功',
+      }
     } 
   },
   computed: {
@@ -444,6 +491,28 @@ export default {
       contact   :state=>state.lang.contact,
       presale   :state=>state.lang.presale,
     })
+  },
+  methods: {
+    emailInput() {
+      // if ( this.email.value )
+      this.email.note = '';
+    },
+    register() {
+      if ( !/[a-zA-Z][a-zA-Z0-9-_.]*@[a-zA-Z0-9]+\.[a-zA-Z]+/.test(this.email.value) ) {
+        return this.email.note = 'invalid';
+      }
+      $.ajax({
+        type:'post',
+        url :'',
+        data:{ email:this.email.value },
+        success:(resp)=> {
+          this.email.note = resp.state===1? 'successful':'failed';
+        },
+        error:()=>{
+          this.email.note = 'failed';
+        }
+      })
+    }
   },
   beforeCreatez() {
     if ( this.$route.query.lang ) {
