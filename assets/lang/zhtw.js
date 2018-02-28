@@ -58,7 +58,7 @@ export default {
     ]
   },
   realization: {
-    title:'產品',
+    title:'技術架構',
     img:require('~/assets/img/scene/scene.png'),
   },
   production: {
@@ -99,7 +99,7 @@ export default {
     }
   },
   team: {
-    title:'Team',
+    title:'團隊',
     items:[
       {
         name  :'向濤',
