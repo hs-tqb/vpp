@@ -164,7 +164,7 @@
         <h1>{{slogan}}</h1>
         <div class="btn-group">
           <a id="white-paper-download" href="/whitepaper/ValPromise_WhitePaper_en_v1.3.7.pdf" target="_blank">{{whitePaper}}</a>
-          <a :class="navs[0].clsn" href="javascript:void(0)">{{navs[0].name}}</a>
+          <a :class="navs[0].clsn" :href="navs[0].link" target="_blank">{{navs[0].name}}</a>
         </div>
         <p>
           <a id="join-btn" href="https://t.me/ValPromise" target="_blank">{{joinGroup}}</a>
