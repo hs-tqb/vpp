@@ -40,7 +40,7 @@
       padding-top:30px;
       // padding:30px 0;
       // float:left;
-      h3 { margin-bottom:30px; padding:0 18px; font-size:30px; color:@color-primary; }
+      h3 { margin-bottom:30px; font-size:30px; color:@color-primary; }
       .join { 
         h3 + p { margin:33px 0; }
         div { 
@@ -115,7 +115,7 @@
     .panel { 
       text-align:center; 
       > div {
-        h3 { margin-bottom:10px; }
+        h3 { margin-bottom:10px;  padding:0 18px; }
         .join {
           p { margin:25px; line-height:1.2; }
           input[type=email] { width:90%; margin:0; }
