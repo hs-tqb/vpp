@@ -1,47 +1,4 @@
 <style lang="less">
-/*
-  #join-email { 
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    background-color: #ebf0f3;
-    // margin:5px ;
-    margin:10px;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #98a7b4;
-    font-style: italic;
-    text-align: left;
-    min-height: 48px;
-    width:260px;
-    border-radius: 10px;
-    -webkit-appearance: textfield;
-    -webkit-rtl-ordering: logical;
-    cursor: text;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-writing-mode: horizontal-tb;
-    text-rendering: auto;
-  }
-  #join-email:focus {
-    color: #495057;
-    background-color: #fff;
-    border-color: #80bdff;
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.5);
-  }
-  #join-btn {
-    display: inline-block;
-    margin: 10px;
-    width: 260px;
-    height: 60px;
-    line-height: 60px;
-    font-size: 30px;
-    text-decoration: none;
-    color: #000;
-    background: rgba(0, 123, 255, .6);
-    border-radius: 30px;
-  }
-*/
 @color-primary:#1ba5fd;
 #page-home {
   color:#fff;
@@ -83,7 +40,7 @@
       padding-top:30px;
       // padding:30px 0;
       // float:left;
-      h3 { margin-bottom:30px; font-size:30px; color:@color-primary; }
+      h3 { margin-bottom:30px; padding:0 18px; font-size:30px; color:@color-primary; }
       .join { 
         h3 + p { margin:33px 0; }
         div { 
@@ -143,11 +100,13 @@
   }
 }
 .mobile #page-home {
+  h3 { padding:0 18px; }
   .card  { width:100%; padding:18px 10px; }
   .panel { width:100%; }
   #news {
     .card {  padding:0; }
   }
+  #white-paper h1 { font-size:30px; }
   #about p { padding:0 15px; width:auto; }
   #team .card { width:100%; padding:18px 10px; }
   #partners { height:470px; }
@@ -204,7 +163,7 @@
         <img src="~/assets/img/logo/logo-v-w.png" />
         <h1>{{slogan}}</h1>
         <div class="btn-group">
-          <a id="white-paper-download" href="/whitepaper/ValPromise_WhitePaper_en_v1.3.7.pdf" target="_blank">White Paper</a>
+          <a id="white-paper-download" href="/whitepaper/ValPromise_WhitePaper_en_v1.3.7.pdf" target="_blank">{{whitePaper}}</a>
           <a :class="navs[0].clsn" href="javascript:void(0)">{{navs[0].name}}</a>
         </div>
         <p>
@@ -517,7 +476,13 @@ export default {
       langs     :state=>state.lang.langs,
       navs      :state=>state.lang.navs,
       slogan    :state=>state.lang.slogan,
-      joinGroup :state=>state.lang.joinGroup,
+      whitePaper:state=>state.lang.whitePaper,
+      joinGroup :state=>{
+        if (typeof window === 'object') {
+          window._joinGroupBtn = state.lang.joinGroup;
+        }
+        return state.lang.joinGroup;
+      },
       news      :state=>state.lang.news,
       about     :state=>state.lang.about,
       highlights:state=>state.lang.highlights,
@@ -577,13 +542,13 @@ export default {
   mounted() {
     initializer($);
     this.docMounted = true;
-    if ( typeof window ==='object' ) {
-      alertify.dismissAll();
-      alertify.message(
-        `<p id="alertify-fixed-para" >Make new friends! </p>
-        <a id="alertify-fixed-btn" href="https://t.me/ValPromise" target="_blank">${this.joinGroup}</a>`
-      , 0)
-    }
+    // if ( typeof window ==='object' ) {
+    //   alertify.dismissAll();
+    //   alertify.message(
+    //     `<p id="alertify-fixed-para" >Make new friends! </p>
+    //     <a id="alertify-fixed-btn" href="https://t.me/ValPromise" target="_blank">${this.joinGroup}</a>`
+    //   , 0)
+    // }
   },
   components: {
     contact, footer1

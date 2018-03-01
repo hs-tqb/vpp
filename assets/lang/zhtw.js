@@ -13,6 +13,7 @@ export default {
   ],
   slogan:'分布式價值承諾協議',
   joinGroup:'加入电报群',
+  whitePaper:'白皮書',
   news: [
     { link:'/news/n2', img:require('~/assets/img/news/2/0-cn.png') },
     { link:'/news/n1', img:require('~/assets/img/news/1/0-cn.png') },

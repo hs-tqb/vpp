@@ -384,9 +384,14 @@ export default function($) {
     screenHei  = document.documentElement.clientHeight;
     panelPoses = [];
     panels.each(function(i, p) {
-      panelPoses.push( {top:p.parentNode.offsetTop, height:p.clientHeight} )
+      panelPoses.push( {name:p.parentNode.id, top:p.parentNode.offsetTop, height:p.clientHeight} )
     });
+    roadmapTop = panelPoses[roadmap.index()].top;
+    console.log( roadmapTop )
   }
+  var roadmap = $('#roadmap');
+  var roadmapTop;
+  var hasAlertifyAppeared = false;
   function highlightPanels() {
     panelPoses.forEach(function(p, i, top) {
       top = getScrollTop()+screenHei-200;
@@ -394,6 +399,16 @@ export default function($) {
         panels.eq(i).addClass('highlight').css({'opacity':1, 'transform':'scale(1)'});
       } else {
         panels.eq(i).removeClass('highlight');
+      }
+      if ( hasAlertifyAppeared || top<roadmapTop ) return;
+      else {
+        hasAlertifyAppeared = true;
+        alertify.message(
+          '<p id="alertify-fixed-para" >Make new friends! </p>'
+          +'<a id="alertify-fixed-btn" href="https://t.me/ValPromise" target="_blank">'
+            + window._joinGroupBtn
+          + '</a>'
+        , 0)
       }
     });
   }

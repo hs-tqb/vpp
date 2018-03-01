@@ -15,6 +15,7 @@ export default {
   ],
   slogan:'Distributed Value Promise Protocol',
   joinGroup:'Join our community',
+  whitePaper:'White Paper',
   news: [
     { link:'/news/n2', img:require('~/assets/img/news/2/0-en.png') },
     { link:'/news/n1', img:require('~/assets/img/news/1/0-en.png') },
